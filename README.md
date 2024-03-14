@@ -1,5 +1,10 @@
 # SharpSAT-TD
 
+Main differences with the original SharpSAT-TD:
+- Weights can be arbitrarily large integers
+- Tree decomposition is disabled
+- CMake edited for MacOS. To run on linux, remove the lines between #macos and #end macos inside CMakeLists.txt
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4880703.svg)](https://doi.org/10.5281/zenodo.4880703)
 
 Submission to model counting competition 2021 by Tuukka Korhonen and Matti Järvisalo (University of Helsinki).
