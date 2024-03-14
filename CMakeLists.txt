@@ -19,11 +19,16 @@ endif(STATIC)
 set(CMAKE_CXX_FLAGS "-std=c++11 -O3 -Wall -Wextra -Wshadow -g -Wfatal-errors -Wno-sign-compare -Wno-literal-suffix")
 
 SET(CMAKE_C_FLAGS "-std=c99 -Wall -msse4.1 -mpclmul")
-
+#macos stuff
+include_directories("/usr/local/Cellar/gmp/6.3.0/include")
+include_directories("/usr/local/Cellar/mpfr/4.2.1/include")
+include_directories("/opt/homebrew/Cellar/sse2neon/1.7.0/include")
+#end macos
 find_library(GMP_LIB gmp)
 find_library(GMPXX_LIB gmpxx)
 find_library(MPFR_LIB mpfr)
 
+add_definitions( -DMPFR_USE_NO_MACRO )
 add_subdirectory(flowcutter)
 
 SET(SOURCES 

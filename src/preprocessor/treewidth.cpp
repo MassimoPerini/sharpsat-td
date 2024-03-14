@@ -35,7 +35,7 @@ TreeDecomposition Treedecomp(const Graph& graph, double time, string tmp_dir) {
 		dec.SetBag(1, {0});
 		return dec;
 	}
-	if (time < 0.099) {
+	if (true || time < 0.099) {
 		TreeDecomposition dec(1, n);
 		vector<int> all;
 		for (int i = 0; i < n; i++) {
@@ -66,10 +66,12 @@ TreeDecomposition Treedecomp(const Graph& graph, double time, string tmp_dir) {
 	assert(WEXITSTATUS(status) == 124); // TIMEOUT timed out
 	cout << "c o tw finish ok" << endl;
 	TreeDecomposition dec(0, 0);
+
 	std::ifstream in(tmp2);
 	string tmp;
 	int claim_width = 0;
-	while (getline(in, tmp)) {
+
+    while (getline(in, tmp)) {
 		std::stringstream ss(tmp);
 		ss>>tmp;
 		if (tmp == "c") continue;

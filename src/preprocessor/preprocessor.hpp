@@ -38,7 +38,7 @@ class Preprocessor {
  	bool unsat = false;
 
  	bool weighted = false;
- 	vector<double> weights;
+ 	vector<mpz_class> weights;
  	int free_vars = 0;
 
  	double max_g_time = 1e9;

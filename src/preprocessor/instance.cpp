@@ -108,13 +108,14 @@ Instance::Instance(string input_file, bool weighted_) {
 		if (tokens.empty()) {
 			continue;
 		} else if (weighted && format == 1 && tokens.size() == 6 && tokens[0] == "c" && tokens[1] == "p" && tokens[2] == "weight") {
+            //weights
 			assert(IsInt(tokens[3], -vars, vars));
 			int dlit = stoi(tokens[3]);
-			double w = stod(tokens[4]);
+			//double w = stod(tokens[4]);
 			assert(dlit != 0);
 			Lit lit = FromDimacs(dlit);
-			weights[lit] = w;
-			weights[Neg(lit)] = (double)1-w;
+			weights[lit] = tokens[4];
+			weights[Neg(lit)] = 1;
 			read_weights++;
 		} else if (tokens[0] == "c") {
 			continue;
@@ -123,6 +124,7 @@ Instance::Instance(string input_file, bool weighted_) {
 			vars = stoi(tokens[2]);
 			pline_clauses = stoi(tokens[3]);
 			if (weighted) {
+                //init weights?
 				weights.resize(vars*2+2);
 				for (int i = 0; i < (int)vars*2+2; i++) {
 					weights[i] = 1;

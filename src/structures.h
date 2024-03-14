@@ -163,6 +163,14 @@ struct Smpz {
     n = (int)d;
     has = true;
   }
+
+  void Init(mpz_class d) {
+      std::cout<<"init: "<<d<<std::endl;
+      //assert(d == 1 || d == -1);
+      n = d;
+      has = true;
+  }
+
   Smpz(const Smpz& other) {
     n = other.n;
     has = other.has;
@@ -193,13 +201,10 @@ struct Smpz {
     return *this;
   }
   Smpz& operator/=(const Smpz& other) {
-    assert(other.has);
-    if (other.n == -1) {
-      n = -n;
-    } else {
-      assert(other.n == 1);
-    }
-    return *this;
+      assert(other.n != 0);
+      assert(other.has);
+      n /= other.n;
+      return *this;
   }
   size_t InternalSize() const {
     return n.get_mpz_t()->_mp_alloc * sizeof(mp_limb_t);

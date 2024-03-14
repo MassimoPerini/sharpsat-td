@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <ostream>
+#include <gmpxx.h>
 
 #include "utils.hpp"
 #include "graph.hpp"
@@ -30,9 +31,9 @@ struct Instance {
 	vector<vector<Lit>> learned_clauses;
 
 	bool weighted = false;
-	mpfr::mpreal weight_factor = 1;
+    mpz_class weight_factor = 1;
 
-  vector<double> weights;
+  vector<mpz_class> weights;
   int total_lits = 0;
  private:
  	Lit RecConstruct(vector<Lit> clause);
